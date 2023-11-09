@@ -6,7 +6,7 @@ Author: Felix Berkenkamp (befelix at inf dot ethz dot ch)
 
 from __future__ import print_function, absolute_import, division
 
-from collections import Sequence            # isinstance(...,Sequence)
+from collections.abc import Sequence            # isinstance(...,Sequence)
 import numpy as np
 import scipy as sp
 import matplotlib.pyplot as plt
@@ -215,7 +215,7 @@ def plot_2d_gp(gp, inputs, predictions=None, figure=None, axis=None,
 
         axis.plot(inputs[:, unfixed[0]], output, **kwargs)
         axis.scatter(gp.X[:-1, unfixed[0]], gp.Y[:-1, 0], s=20 * ms,
-                     marker='x', linewidths=mew, color=point_color)
+                     marker='x', linewidths=mew, color=point_color[:-1])
         axis.scatter(gp.X[-1, unfixed[0]], gp.Y[-1, 0], s=20 * ms,
                      marker='x', linewidths=mew, color='r')
         axis.set_xlim([np.min(inputs[:, unfixed[0]]),
